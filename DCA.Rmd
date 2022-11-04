@@ -1,0 +1,21 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readxl)
+library(tidyr)
+Book2 = read_excel("E:/Book2.xlsx")
+df6 = Book2 %>% fill(c(1,2),.direction = 'down')
+df7 = drop_na(df6)
+sum(is.na(df7))
+
+#install.packages("xlsx")
+library("xlsx")
+# Write the data set in a new workbook
+write.xlsx(df7, file = "cleanedbook.xlsx",
+      sheetName = "Book2", append = FALSE)
+
+```
+
